@@ -22,4 +22,28 @@ def main():
     determine_if_pangram_exists()
 
 
-def determine_if_pangram_exists(x): ...
+def determine_if_pangram_exists(str):
+    """
+    Str -> Boolean
+    Take a string and determine if a pangram exists in it
+    """
+
+
+def string_has_over_25_letters(str):
+    """
+    Str -> Boolean
+    Produce true if string has 26 letters or more
+    """
+    cleaned_str = ''.join(filter(str.isalpha, str))
+    print(cleaned_str)
+    if len(cleaned_str) > 25:
+        return True
+    else:
+        return False
+
+
+def isolate_z_sentence(str):
+    """
+    Str -> Str
+    Take a string and if it has a 'z' then isolate that sentence
+    """
