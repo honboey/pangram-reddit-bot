@@ -1,5 +1,6 @@
 import praw
 import string
+import re
 import os
 from dotenv import load_dotenv
 
@@ -19,11 +20,10 @@ reddit = praw.Reddit(
 )
 
 
-def main():
-    determine_if_pangram_exists()
+def main(): ...
 
 
-def determine_if_pangram_exists(str):
+def reproduce_pangram_if_it_exists(str):
     """
     Str -> Boolean
     Take a string and determine if a pangram exists in it
@@ -42,7 +42,6 @@ def string_has_over_25_letters(str):
     translation_table = str.maketrans("", "", chars_to_remove)
 
     cleaned_str = str.translate(translation_table)
-    print(f"\n\n\n\n++++++++++++++++++++++++++\n{cleaned_str}\n++++++++++++++++")
     if len(cleaned_str) > 25:
         return True
     else:
@@ -54,5 +53,25 @@ def isolate_z_sentence(str):
     Str -> Str
     Take a string and if it has a 'z' then isolate that sentence
     """
-    # if "z" in str:
-    #     print(f"\n\n\n\n++++++++++++++++++++++++++\nhell yeah\n++++++++++++++++")
+    if "z" in str.lower():
+        separated_string = re.split(r"(?<=\w[.!?])\s", str)
+        for sentence in separated_string:
+            if "z" in sentence:
+                return sentence
+    else:
+        return "No pangram"
+
+
+def determine_if_sentence_is_pangram(str):
+    """
+    Str -> Boolean
+    """
+    # Create set of letters found in str
+    letters_found = set()
+
+    # Iterate over each character and if it is an alpha and not in letters_found, add it to letters_found
+    for char in str.lower():
+        if char.isalpha() and char not in letters_found:
+            letters_found.add(char)
+
+    return len(letters_found) == 26
