@@ -1,5 +1,5 @@
 from main import (
-    determine_if_pangram_exists,
+    reproduce_pangram_if_it_exists,
     determine_if_sentence_is_pangram,
     string_has_over_25_letters,
     isolate_z_sentence,
@@ -17,18 +17,24 @@ multi_sentence_non_pangram = (
 )
 
 
-class TestDetermineIfPangramExists:
-    def test_determine_if_pangram_exists__single_sentence_pangram(self):
-        assert determine_if_pangram_exists(single_sentence_pangram) == True
+class TestReproducePangramIfItExists:
+    def test_reproduce_pangram_if_it_exists__single_sentence_pangram(self):
+        assert reproduce_pangram_if_it_exists(single_sentence_pangram) == single_sentence_pangram
 
-    def test_determine_if_pangram_exists__multi_sentence_pangram(self):
-        assert determine_if_pangram_exists(multi_sentence_pangram) == True
+    def test_reproduce_pangram_if_it_exists__single_sentence_pangram_with_punctuation(self):
+        assert reproduce_pangram_if_it_exists(single_sentence_pangram_with_punctuation) == single_sentence_pangram_with_punctuation
 
-    def test_determine_if_pangram_exists__single_sentence_non_pangram(self):
-        assert determine_if_pangram_exists(single_sentence_non_pangram) == False
+    def test_reproduce_pangram_if_it_exists__multi_sentence_pangram(self):
+        assert reproduce_pangram_if_it_exists(multi_sentence_pangram) == single_sentence_pangram
 
-    def test_determine_if_pangram_exists__multi_sentence_non_pangram(self):
-        assert determine_if_pangram_exists(multi_sentence_non_pangram) == False
+    def test_reproduce_pangram_if_it_exists__multi_sentence_pangram_with_punctuation(self):
+        assert reproduce_pangram_if_it_exists(multi_sentence_pangram_with_punctuation) == single_sentence_pangram_with_punctuation
+
+    def test_reproduce_pangram_if_it_exists__single_sentence_non_pangram(self):
+        assert reproduce_pangram_if_it_exists(single_sentence_non_pangram) == None
+
+    def test_reproduce_pangram_if_it_exists__multi_sentence_non_pangram(self):
+        assert reproduce_pangram_if_it_exists(multi_sentence_non_pangram) == None
 
 
 class TestStringHasOver25Letters:

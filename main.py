@@ -16,7 +16,7 @@ reddit = praw.Reddit(
     client_secret=reddit_client_secret,
     password=reddit_password,
     username=reddit_username,
-    user_agent="pangram_detector_bot:v1",
+    user_agent="pangram_detector_bot:v1 (by /u/you-wrote-a-pangram)",
 )
 
 
@@ -25,9 +25,13 @@ def main(): ...
 
 def reproduce_pangram_if_it_exists(str):
     """
-    Str -> Boolean
+    Str -> Str
     Take a string and determine if a pangram exists in it
     """
+    if string_has_over_25_letters(str):
+        z_sentence = isolate_z_sentence(str)
+        if determine_if_sentence_is_pangram(z_sentence):
+            return z_sentence
 
 
 def string_has_over_25_letters(str):
