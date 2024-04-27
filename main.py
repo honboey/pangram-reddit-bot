@@ -1,4 +1,5 @@
 import praw
+import string
 import os
 from dotenv import load_dotenv
 
@@ -34,8 +35,14 @@ def string_has_over_25_letters(str):
     Str -> Boolean
     Produce true if string has 26 letters or more
     """
-    cleaned_str = ''.join(filter(str.isalpha, str))
-    print(cleaned_str)
+    # Create string of all punctuation and space
+    chars_to_remove = " " + string.punctuation
+
+    # Create translation table of characters to remove
+    translation_table = str.maketrans("", "", chars_to_remove)
+
+    cleaned_str = str.translate(translation_table)
+    print(f"\n\n\n\n++++++++++++++++++++++++++\n{cleaned_str}\n++++++++++++++++")
     if len(cleaned_str) > 25:
         return True
     else:
@@ -47,3 +54,5 @@ def isolate_z_sentence(str):
     Str -> Str
     Take a string and if it has a 'z' then isolate that sentence
     """
+    # if "z" in str:
+    #     print(f"\n\n\n\n++++++++++++++++++++++++++\nhell yeah\n++++++++++++++++")

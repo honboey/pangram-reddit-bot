@@ -27,14 +27,14 @@ class TestDetermineIfPangramExists:
 
 
 class TestStringHasOver25Letters:
-    def test_string_has_over_25_letters__true(self):
+    def test_string_has_over_25_letters__single_sentence(self):
         assert string_has_over_25_letters(single_sentence_pangram) == True
 
+    def test_string_has_over_25_letters__multi_sentence(self):
+        assert string_has_over_25_letters(multi_sentence_pangram) == True
+
     def test_string_has_over_25_letters__false(self):
-        assert (
-            string_has_over_25_letters("The quick brown fox jumps over the lazy")
-            == False
-        )
+        assert string_has_over_25_letters("The quick brown fox jumps over") == False
 
 
 class TestDoesStringHaveZ:
