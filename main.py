@@ -1,3 +1,4 @@
+import sys
 import praw
 import string
 import re
@@ -20,7 +21,12 @@ reddit = praw.Reddit(
 )
 
 
-def main(): ...
+def main():
+    subreddits = reddit.subreddit("pangram_bot_testing")
+    for post in subreddits.stream.submissions():
+        if reproduce_pangram_if_it_exists(post.title) != None:
+            pangram_sentence = reproduce_pangram_if_it_exists(post.title)
+            print(pangram_sentence)
 
 
 def reproduce_pangram_if_it_exists(str):
@@ -77,5 +83,12 @@ def determine_if_sentence_is_pangram(str):
     for char in str.lower():
         if char.isalpha() and char not in letters_found:
             letters_found.add(char)
-
     return len(letters_found) == 26
+
+
+if __name__ == "__main__":
+    main()
+
+
+# reproduce_pangram_if_it_exists("This is a pangram. The quick brown fox jumps over the lazy dog.")
+# reproduce_pangram_if_it_exists("This is not a pangram.")

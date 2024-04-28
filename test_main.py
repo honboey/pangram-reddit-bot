@@ -19,16 +19,32 @@ multi_sentence_non_pangram = (
 
 class TestReproducePangramIfItExists:
     def test_reproduce_pangram_if_it_exists__single_sentence_pangram(self):
-        assert reproduce_pangram_if_it_exists(single_sentence_pangram) == single_sentence_pangram
+        assert (
+            reproduce_pangram_if_it_exists(single_sentence_pangram)
+            == single_sentence_pangram
+        )
 
-    def test_reproduce_pangram_if_it_exists__single_sentence_pangram_with_punctuation(self):
-        assert reproduce_pangram_if_it_exists(single_sentence_pangram_with_punctuation) == single_sentence_pangram_with_punctuation
+    def test_reproduce_pangram_if_it_exists__single_sentence_pangram_with_punctuation(
+        self,
+    ):
+        assert (
+            reproduce_pangram_if_it_exists(single_sentence_pangram_with_punctuation)
+            == single_sentence_pangram_with_punctuation
+        )
 
     def test_reproduce_pangram_if_it_exists__multi_sentence_pangram(self):
-        assert reproduce_pangram_if_it_exists(multi_sentence_pangram) == single_sentence_pangram
+        assert (
+            reproduce_pangram_if_it_exists(multi_sentence_pangram)
+            == single_sentence_pangram
+        )
 
-    def test_reproduce_pangram_if_it_exists__multi_sentence_pangram_with_punctuation(self):
-        assert reproduce_pangram_if_it_exists(multi_sentence_pangram_with_punctuation) == single_sentence_pangram_with_punctuation
+    def test_reproduce_pangram_if_it_exists__multi_sentence_pangram_with_punctuation(
+        self,
+    ):
+        assert (
+            reproduce_pangram_if_it_exists(multi_sentence_pangram_with_punctuation)
+            == single_sentence_pangram_with_punctuation
+        )
 
     def test_reproduce_pangram_if_it_exists__single_sentence_non_pangram(self):
         assert reproduce_pangram_if_it_exists(single_sentence_non_pangram) == None
