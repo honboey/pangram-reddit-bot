@@ -1,4 +1,4 @@
-from main import (
+from sentence_pangram import (
     reproduce_pangram_if_it_exists,
     determine_if_sentence_is_pangram,
     string_has_over_25_letters,
