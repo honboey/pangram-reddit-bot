@@ -26,7 +26,21 @@ def main():
     for post in subreddits.stream.submissions():
         if reproduce_pangram_if_it_exists(post.title) != None:
             pangram_sentence = reproduce_pangram_if_it_exists(post.title)
-            print(pangram_sentence)
+            post_reply(post, pangram_sentence)
+
+
+# Functions to interact with Reddit
+
+
+def post_reply(post, pangram):
+    """
+    Given a Reddit post and the relevant pangram, post a pre-written reply.
+    """
+    reply = f"Your sentence, '{pangram}', contains every letter in the alphabet!"
+    post.reply(reply)
+
+
+# Functions to identify pangrams
 
 
 def reproduce_pangram_if_it_exists(str):
@@ -88,7 +102,3 @@ def determine_if_sentence_is_pangram(str):
 
 if __name__ == "__main__":
     main()
-
-
-# reproduce_pangram_if_it_exists("This is a pangram. The quick brown fox jumps over the lazy dog.")
-# reproduce_pangram_if_it_exists("This is not a pangram.")
