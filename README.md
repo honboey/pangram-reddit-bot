@@ -1,4 +1,4 @@
-# pangram-reddit-bot
+# Pangram Reddit Bot
 A bot that identifies pangrams in Reddit posts and titles
 
 A pangram is a sentence that uses every letter in the alphabet, the most famous being "The quick brown fox jumps over the lazy dog".
